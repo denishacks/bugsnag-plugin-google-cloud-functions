@@ -1,0 +1,55 @@
+{
+  "name": "bugsnag-plugin-google-cloud-functions",
+  "version": "0.2.0",
+  "description": "Google Cloud Functions support for @bugsnag/node",
+  "main": "dist/bugsnag-plugin-google-cloud-functions.js",
+  "types": "types/bugsnag-plugin-google-cloud-functions.d.ts",
+  "bugs": {
+    "url": "https://github.com/denishacks/bugsnag-plugin-google-cloud-functions/issues"
+  },
+  "homepage": "https://github.com/denishacks/bugsnag-plugin-google-cloud-functions#readme",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:denishacks/bugsnag-plugin-google-cloud-functions.git"
+  },
+  "scripts": {
+    "clean": "rm -fr dist && mkdir dist",
+    "build": "npm run clean && ./bin/bundle src/index.js --node --standalone=BugsnagPluginGoogleCloudFunctions | ./bin/extract-source-map dist/bugsnag-plugin-google-cloud-functions.js"
+  },
+  "author": {
+    "name": "Denis Barsukov",
+    "email": "salem@denis.site"
+  },
+  "dependencies": {
+    "@bugsnag/in-flight": "^7.18.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/plugin-transform-block-scoping": "^7.8.3",
+    "@babel/plugin-transform-classes": "^7.8.3",
+    "@babel/plugin-transform-computed-properties": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.8.3",
+    "@babel/plugin-transform-member-expression-literals": "^7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
+    "@babel/plugin-transform-parameters": "^7.8.4",
+    "@babel/plugin-transform-property-literals": "^7.8.3",
+    "@babel/plugin-transform-shorthand-properties": "^7.8.3",
+    "@babel/plugin-transform-spread": "^7.8.3",
+    "@babel/plugin-transform-template-literals": "^7.8.3",
+    "@bugsnag/core": "^7.18.0",
+    "babelify": "^10.0.0",
+    "browser-pack-flat": "^3.2.0",
+    "browserify": "^16.2.2",
+    "browserify-versionify": "^1.0.6",
+    "jest": "^26.4.2",
+    "exorcist": "^1.0.1",
+    "mold-source-map": "https://github.com/denishacks/mold-source-map/archive/refs/tags/v0.4.1.tar.gz"
+  },
+  "peerDependencies": {
+    "@bugsnag/core": "^7.0.0"
+  }
+}
