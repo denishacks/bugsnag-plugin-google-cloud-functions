@@ -46,8 +46,7 @@
     "browserify": "^16.2.2",
     "browserify-versionify": "^1.0.6",
     "jest": "^26.4.2",
-    "exorcist": "^1.0.1",
-    "mold-source-map": "https://github.com/denishacks/mold-source-map/archive/refs/tags/v0.4.1.tar.gz"
+    "exorcist": "^1.0.1"
   },
   "peerDependencies": {
     "@bugsnag/core": "^7.0.0"
