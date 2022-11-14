@@ -11,8 +11,8 @@ type CloudEventFunction = (cloudEvent: any) => Promise<any>
 type CloudEventFunctionWithCallback = (cloudEvent: any, callback: CallbackFunction) => void
 
 export type BugsnagPluginGoogleCloudFunctionsHttpHandler = (handler: HttpFunction) => HttpFunction
-export type BugsnagPluginGoogleCloudFunctionsEventHandler = (handler: EventFunction | EventFunctionWithCallback) => EventFunction
-export type BugsnagPluginGoogleCloudFunctionsCloudEventHandler = (handler: CloudEventFunction | CloudEventFunctionWithCallback) => CloudEventFunction
+export type BugsnagPluginGoogleCloudFunctionsEventHandler = (handler: EventFunction | EventFunctionWithCallback) => EventFunction | EventFunctionWithCallback
+export type BugsnagPluginGoogleCloudFunctionsCloudEventHandler = (handler: CloudEventFunction | CloudEventFunctionWithCallback) => CloudEventFunction | CloudEventFunctionWithCallback
 
 export interface BugsnagPluginGoogleCloudFunctionsConfiguration {
     flushTimeoutMs?: number
