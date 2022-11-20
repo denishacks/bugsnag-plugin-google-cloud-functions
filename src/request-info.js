@@ -16,6 +16,9 @@ module.exports = (req) => {
     httpVersion: req.httpVersion,
   }
 
+  const params = extractObject(req, 'params')
+  // by default there is parameter '0' with an empty string value
+  request.params = 0 in params && params[0] === '' ? undefined : params
   request.query = extractObject(req, 'query')
   request.body = extractObject(req, 'body')
 
