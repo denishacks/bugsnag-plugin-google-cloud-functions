@@ -1,18 +1,18 @@
 # bugsnag-plugin-google-cloud-functions
 
-A [@bugsnag/js](https://github.com/bugsnag/bugsnag-js) plugin for capturing errors in Google Cloud Functions.
+A [@bugsnag/js](https://docs.bugsnag.com/platforms/javascript/) plugin for capturing errors in Google Cloud Functions.
 
 ## Quickstart
 
-Install and configure [@bugsnag/js](https://www.npmjs.com/package/@bugsnag/js), then install the Google Cloud Functions
+Install and configure [@bugsnag/js](https://docs.bugsnag.com/platforms/javascript/), then install the Google Cloud Functions
 plugin using npm or yarn:
 
 ```shell
-npm install bugsnag-plugin-google-cloud-functions
+npm install @bugsnag/js bugsnag-plugin-google-cloud-functions
 ```
 
 ```shell
-yarn add bugsnag-plugin-google-cloud-functions
+yarn add @bugsnag/js bugsnag-plugin-google-cloud-functions
 ```
 
 To start Bugsnag with the Google Cloud Functions, pass the plugin to `Bugsnag.start`:
@@ -29,7 +29,9 @@ Bugsnag.start({
 ```
 
 Start handling errors in your Google Cloud Functions function by wrapping your handler with Bugsnag handler identical by
-signature type:
+signature type. Please note, if your Cloud Functions function uses [Express application as http handler](https://medium.com/google-cloud/express-routing-with-google-cloud-functions-36fb55885c68) use [@bugsnag/plugin-express](https://docs.bugsnag.com/platforms/javascript/express/) pluging instead.
+
+HTTP function:
 
 ```javascript
 const functions = require('@google-cloud/functions-framework')
@@ -38,11 +40,15 @@ const bugsnagHandler = Bugsnag.getPlugin('googleCloudFunctions').createHttpHandl
 functions.http('httpFunction', bugsnagHandler((req, res) => {}))
 ```
 
+Background function:
+
 ```javascript
 const bugsnagHandler = Bugsnag.getPlugin('googleCloudFunctions').createEventHandler()
 exports.backgroundFunction = bugsnagHandler((data, context) => {})
 exports.backgroundFunction = bugsnagHandler((data, context, callback) => {})
 ```
+
+CloudEvent function:
 
 ```javascript
 const functions = require('@google-cloud/functions-framework')
