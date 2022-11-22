@@ -4,6 +4,7 @@
   "description": "Google Cloud Functions support for @bugsnag/node",
   "main": "dist/bugsnag-plugin-google-cloud-functions.js",
   "types": "types/bugsnag-plugin-google-cloud-functions.d.ts",
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/denishacks/bugsnag-plugin-google-cloud-functions/issues"
   },
@@ -18,7 +19,8 @@
   },
   "author": {
     "name": "Denis Barsukov",
-    "email": "salem@denis.site"
+    "email": "salem@denis.site",
+    "url": "https://www.linkedin.com/in/denishacks/"
   },
   "dependencies": {
     "@bugsnag/in-flight": "^7.18.0"
@@ -50,5 +52,8 @@
   },
   "peerDependencies": {
     "@bugsnag/core": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
