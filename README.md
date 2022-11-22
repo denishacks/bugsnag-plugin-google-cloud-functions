@@ -93,4 +93,4 @@ If a timeout does occur, Bugsnag will log a warning and events & sessions may no
 
 ## License
 
-[UNLICENSE](UNLICENSE)
+[The Unlicense](UNLICENSE)
