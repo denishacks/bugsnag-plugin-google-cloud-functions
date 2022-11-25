@@ -1,5 +1,7 @@
 # bugsnag-plugin-google-cloud-functions
 
+[![bugsnag-plugin-google-cloud-functions](https://snyk.io/advisor/npm-package/bugsnag-plugin-google-cloud-functions/badge.svg)](https://snyk.io/advisor/npm-package/bugsnag-plugin-google-cloud-functions)
+
 A [@bugsnag/js](https://docs.bugsnag.com/platforms/javascript/) plugin for capturing errors in Google Cloud Functions.
 
 ## Quickstart
