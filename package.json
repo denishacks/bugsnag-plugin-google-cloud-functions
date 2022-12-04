@@ -1,6 +1,6 @@
 {
   "name": "bugsnag-plugin-google-cloud-functions",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Google Cloud Functions support for @bugsnag/node",
   "main": "dist/bugsnag-plugin-google-cloud-functions.js",
   "types": "types/bugsnag-plugin-google-cloud-functions.d.ts",
