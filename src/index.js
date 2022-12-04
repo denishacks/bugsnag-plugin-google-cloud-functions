@@ -57,7 +57,17 @@ function wrapHttpHandler (client, flushTimeoutMs, handler) {
       client._notify(event)
     }
 
-    return execute(client, flushTimeoutMs, onError, handler, req, res)
+    // Determine whether handler is an instance of Express or not?
+    const _handler = typeof handler.handle === 'function'
+      ? handler.handle.bind(handler)
+      : handler
+
+    const proxyHandler = async (req, res) => {
+      await _handler(req, res)
+      await waitForStreamComplete(res)
+    }
+
+    return execute(client, flushTimeoutMs, onError, proxyHandler, req, res)
   }
 }
 
@@ -179,6 +189,38 @@ function getRequestAndMetadataFromReq (req) {
       referer: requestInfo.referer,
     },
   }
+}
+
+function waitForStreamComplete (stream) {
+  if (stream.complete || stream.writableEnded) {
+    return stream
+  }
+
+  return new Promise((resolve, reject) => {
+    stream.once('error', complete)
+    stream.once('end', complete)
+    stream.once('finish', complete)
+
+    let isComplete = false
+
+    function complete (err) {
+      if (isComplete) {
+        return
+      }
+
+      isComplete = true
+
+      stream.removeListener('error', complete)
+      stream.removeListener('end', complete)
+      stream.removeListener('finish', complete)
+
+      if (err) {
+        reject(err)
+      } else {
+        resolve(stream)
+      }
+    }
+  })
 }
 
 module.exports = BugsnagPluginGoogleCloudFunctions

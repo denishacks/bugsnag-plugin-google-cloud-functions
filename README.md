@@ -31,7 +31,7 @@ Bugsnag.start({
 ```
 
 Start handling errors in your Google Cloud Functions function by wrapping your handler with Bugsnag handler identical by
-signature type. Please note, if your Cloud Functions function uses [Express application as http handler](https://medium.com/google-cloud/express-routing-with-google-cloud-functions-36fb55885c68) use [@bugsnag/plugin-express](https://docs.bugsnag.com/platforms/javascript/express/) pluging instead.
+signature type.
 
 HTTP function:
 
@@ -40,6 +40,19 @@ const functions = require('@google-cloud/functions-framework')
 
 const bugsnagHandler = Bugsnag.getPlugin('googleCloudFunctions').createHttpHandler()
 functions.http('httpFunction', bugsnagHandler((req, res) => {}))
+```
+
+HTTP function with express app handler:
+
+```javascript
+const express = require('express')
+const functions = require('@google-cloud/functions-framework')
+
+const app = express()
+app.use((req, res, next) => {})
+
+const bugsnagHandler = Bugsnag.getPlugin('googleCloudFunctions').createHttpHandler()
+functions.http('httpFunction', bugsnagHandler(app))
 ```
 
 Background function:
